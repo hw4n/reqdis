@@ -11,6 +11,10 @@ html {
     transition: 0.5s;
 }
 
+h1 {
+    margin-left: .5em;
+}
+
 .header {
     display: flex;
 }
