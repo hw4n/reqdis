@@ -5,7 +5,7 @@ function createElements(message) {
 }
 
 setInterval(() => {
-    fetch('http://localhost:3000/msg')
+    fetch('http://localhost:4343/msg')
         .then(response => response.json())
         .then(data => {
             if (messageData.length !== data.length) {
