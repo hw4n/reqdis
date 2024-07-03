@@ -15,6 +15,8 @@ setInterval(() => {
     fetch('https://yapi.hwan.me/msg')
         .then(response => response.json())
         .then(data => {
+            document.querySelector('.time').innerHTML = new Date().toLocaleTimeString();
+
             if (messageData.length === 0) {
                 document.getElementById('container').innerHTML = createElements(data);
                 messageData = data.slice();
