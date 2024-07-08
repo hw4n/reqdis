@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const Message = require('./models/Message');
 const cors = require('cors');
+const screener =  require('./helper/screener');
 
 const app = express();
 
@@ -23,8 +24,8 @@ app.post('/msg', (req, res) => {
     }
     
     Message.create({
-        message: req.body.message,
-        author: req.body.author
+        message: screener.censorMessage(req.body.message),
+        author: screener.censorMessage(req.body.author)
     }).then(() => {
         res.status(200).send('Message created');
     });
