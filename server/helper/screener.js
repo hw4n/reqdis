@@ -4,8 +4,8 @@ const fs = require('fs');
 
 class screener {
     static censorMessage(originalMessage) {
-        pureMessage = originalMessage.replace('/[!@#$%^&*()_+ ,.]/g', '');
-        processedMessage = pureMessage;
+        var pureMessage = originalMessage.replace('/[!@#$%^&*()_+ ,.]/g', '');
+        var processedMessage = pureMessage;
         const curseDB = JSON.parse(fs.readFileSync('./static/curse.json', 'utf8'));
 
         for (let filteredWord in curseDB) {
