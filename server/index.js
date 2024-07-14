@@ -31,6 +31,18 @@ app.post('/msg', (req, res) => {
     });
 });
 
+app.get('/free-flag', (req, res) => {
+    if (!req.query.reason) {
+        res.status(400).send('Missing parameter - reason');
+        return;
+    } else {
+        res.status(200).send({
+            flag: "flag{reasonable_free_flag_here!@}",
+            reason: req.query.reason
+        });
+    }
+});
+
 app.listen(4343, () => {
     console.log('Server is running on port 4343');
 });
