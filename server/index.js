@@ -11,26 +11,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.get('/msg', (req, res) => {
-    Message.find().then((messages) => {
-        res.status(200).send(messages);
-    });
-});
-
-app.post('/msg', (req, res) => {
-    if (!req.body.message || !req.body.author) {
-        res.status(400).send('Missing message or author');
-        return;
-    }
-    
-    Message.create({
-        message: screener.censorMessage(req.body.message),
-        author: screener.censorMessage(req.body.author)
-    }).then(() => {
-        res.status(200).send('Message created');
-    });
-});
-
 app.get('/free-flag', (req, res) => {
     if (!req.query.reason) {
         res.status(400).send('Missing parameter - reason');
